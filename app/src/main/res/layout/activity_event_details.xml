@@ -14,31 +14,67 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
-        android:layout_marginBottom="20dp"
         android:adjustViewBounds="true"
-        android:scaleType="fitCenter"
         android:layout_weight="2"
+        android:layout_margin="10dp"
+        android:scaleType="fitCenter"
         app:srcCompat="@mipmap/ic_launcher" />
 
     <TextView
         android:id="@+id/eventTitleTextView"
-        android:layout_weight=".25"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        android:textSize="44sp"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="20dp"
+        android:layout_marginLeft="20dp"
+        android:padding="2dp"
+        android:layout_height="wrap_content"
+        android:text="title"/>
 
     <TextView
         android:id="@+id/eventDateTextView"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
-
-    <TextView
-        android:id="@+id/eventDayTextView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:padding="2dp"
+        android:textSize="26sp"
+        android:text="date"/>
 
     <TextView
         android:id="@+id/eventTimeTextView"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:padding="2dp"
+        android:textSize="26sp"
+        android:text="time"/>
+
+    <TextView
+        android:id="@+id/eventLocationTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:padding="2dp"
+        android:textSize="26sp"
+        android:text="location"/>
+
+    <TextView
+        android:id="@+id/eventAddress1TextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:padding="2dp"
+        android:textSize="26sp"
+        android:text="address1"/>
+
+    <TextView
+        android:id="@+id/eventAddress2TextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:layout_marginBottom="30dp"
+        android:padding="2dp"
+        android:textSize="26sp"
+        android:text="address2"/>
 
 </LinearLayout>

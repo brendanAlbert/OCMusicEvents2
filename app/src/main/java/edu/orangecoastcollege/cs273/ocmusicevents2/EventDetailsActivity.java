@@ -13,8 +13,6 @@ import android.widget.TextView;
 import java.io.IOException;
 import java.io.InputStream;
 
-import static edu.orangecoastcollege.cs273.ocmusicevents2.R.id.eventImageView;
-
 public class EventDetailsActivity extends AppCompatActivity {
 
     @Override
@@ -22,43 +20,34 @@ public class EventDetailsActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_event_details);
 
-
         Intent intent = getIntent();
-        String title = intent.getStringExtra("Title");
-        String imageName = intent.getStringExtra("ImageName");
-        String date = intent.getStringExtra("Date");
-        String day = intent.getStringExtra("Day");
-        String time = intent.getStringExtra("Time");
-        String location = intent.getStringExtra("Location");
-        String address1 = intent.getStringExtra("Address1");
-        String address2 = intent.getStringExtra("Address2");
+        String imageFileName = intent.getStringExtra("ImageName");
 
-        //String imageFileName = title.replace(" ", "") + ".jpeg";
-        String imageFileName = 
-
-        ImageView eventImageView = (ImageView) findViewById(R.id.eventImageView);
-        TextView eventTitleTextView = (TextView) findViewById(R.id.eventTitleTextView);
-        TextView eventDateTextView = (TextView) findViewById(R.id.eventDateTextView);
-        TextView eventDayTextView = (TextView) findViewById(R.id.eventDayTextView);
-        TextView eventTimeTextView = (TextView) findViewById(R.id.eventTimeTextView);
+        ImageView eventImageView       = (ImageView) findViewById(R.id.eventImageView);
+        TextView eventTitleTextView    = (TextView) findViewById(R.id.eventTitleTextView);
+        TextView eventDateTextView     = (TextView) findViewById(R.id.eventDateTextView);
+        TextView eventTimeTextView     = (TextView) findViewById(R.id.eventTimeTextView);
+        TextView eventLocationTextView = (TextView) findViewById(R.id.eventLocationTextView);
+        TextView eventAddress1TextView = (TextView) findViewById(R.id.eventAddress1TextView);
+        TextView eventAddress2TextView = (TextView) findViewById(R.id.eventAddress2TextView);
 
 
         AssetManager am = this.getAssets();
         try {
             InputStream stream = am.open(imageFileName);
-            Drawable image = Drawable.createFromStream(stream, title);
+            Drawable image = Drawable.createFromStream(stream, intent.getStringExtra("Title"));
             eventImageView.setImageDrawable(image);
         }
         catch (IOException e)
         {
             Log.e("OC Music Events", "Error loading image: " + imageFileName, e);
         }
-        eventTitleTextView.setText(title);
-        eventDateTextView.setText(date);
-        eventDayTextView.setText(day);
-        eventTimeTextView.setText(time);
-        eventTitleTextView.setText(title);
-        eventDateTextView.setText(date);
+        eventTitleTextView.setText(intent.getStringExtra("Title"));
+        eventDateTextView.setText(intent.getStringExtra("Date") + " - " + intent.getStringExtra("Day"));
+        eventTimeTextView.setText(intent.getStringExtra("Time"));
+        eventLocationTextView.setText(intent.getStringExtra("Location"));
+        eventAddress1TextView.setText(intent.getStringExtra("Address1"));
+        eventAddress2TextView.setText(intent.getStringExtra("Address2"));
 
 
     }
