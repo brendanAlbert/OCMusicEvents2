@@ -19,6 +19,19 @@ import java.io.InputStream;
 import java.util.List;
 
 /**
+ * EventListAdapter is used to build our custom layout for each item in the EventList.
+ * The three member variables are:
+ *
+ *  1) mContent which will be the Activity where we want our EventList to display.
+ *      In this case  EventListActivity will call setListAdapter and pass in a new
+ *      EventListAdapter which takes "this" for its context.
+ *
+ *  2) mResource is the .xml file which contains the custom layout we want to display,
+ *      music_event_list_item.xml, for each event in the EventList.
+ *
+ *  3) mAllEventsList is a list of MusicEvents which will contain all the events loaded
+ *      in from the JSON file by the helper class, JSONLoader.
+ *
  * Created by balbert on 9/26/2017.
  */
 
@@ -28,9 +41,15 @@ public class EventListAdapter extends ArrayAdapter<MusicEvent> {
     private int mResource;
     private List<MusicEvent> mAllEventsList;
 
-    // context = Activity that uses the adapter (EventListActivity)
-    // resource = layout fiel to inflate (R.layout.music_event_list_item)
-    // object/allMusicEvents = List<MusicEvent>
+    /**
+     * EventListAdapter is a constructor with three parameters.
+     * This constructor is used to create a new EventListAdapter object
+     * which is passed into the SetListAdapter method in EventListActivity.java.
+     *
+     * @param context = Activity that uses the adapter (EventListActivity)
+     * @param resource = layout file to inflate (R.layout.music_event_list_item)
+     * @param allMusicEvents allMusicEvents = List<MusicEvent>
+     */
     public EventListAdapter(@NonNull Context context, @LayoutRes int resource, @NonNull List<MusicEvent> allMusicEvents) {
         super(context, resource, allMusicEvents);
         mContext = context;
@@ -38,8 +57,16 @@ public class EventListAdapter extends ArrayAdapter<MusicEvent> {
         mAllEventsList = allMusicEvents;
     }
 
-    // TODO: Override method called getView
-
+    /**
+     *
+     * When creating a custom view for each object, our Adapter class extends ArrayAdapter.
+     * And we must override the getView method so we can inflate our custom view.
+     *
+     * @param position is the particular MusicEvent event tapped on by the user.
+     * @param convertView
+     * @param parent
+     * @return
+     */
     @NonNull
     @Override
     public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
